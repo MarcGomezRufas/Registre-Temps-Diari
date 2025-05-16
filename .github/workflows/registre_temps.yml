@@ -1,0 +1,34 @@
+name: Registre diari de temperatures
+
+on:
+  schedule:
+    - cron: '59 23 * * *'
+  workflow_dispatch:
+
+jobs:
+  temperatura:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clona el repositori
+        uses: actions/checkout@v3
+
+      - name: Configura Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Instal·la llibreries
+        run: |
+          pip install openmeteo-requests pandas requests-cache retry-requests
+
+      - name: Executa el script
+        run: python GitHub_Actions.py
+
+      - name: Puja el fitxer JSON
+        run: |
+          git config user.name "MarcGomezRufas"
+          git config user.email "marc.gomez22@lacetania.cat"
+          git add *.json
+          git commit -m "Afegit fitxer json diari" || echo "Sense canvis"
+          git push
