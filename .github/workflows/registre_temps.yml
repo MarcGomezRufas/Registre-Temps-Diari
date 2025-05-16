@@ -25,7 +25,6 @@ jobs:
       - name: Executa el script
         run: python ProjecteGitHub-Actions/GitHub_Actions.py
 
-
       - name: Puja el fitxer JSON
         run: |
           git config user.name "MarcGomezRufas"
