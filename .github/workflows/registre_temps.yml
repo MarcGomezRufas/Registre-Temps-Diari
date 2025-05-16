@@ -18,12 +18,15 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Llista fitxers i carpetes del repositori
+        run: ls -R
+        
       - name: Instal·la llibreries
         run: |
           pip install openmeteo-requests pandas requests-cache retry-requests
 
       - name: Executa el script
-        run: python ProjecteGitHub-Actions/GitHub_Actions.py
+        run: python src/GitHub_Actions.py
 
       - name: Puja el fitxer JSON
         run: |
