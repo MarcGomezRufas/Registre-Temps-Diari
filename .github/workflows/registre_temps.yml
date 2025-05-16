@@ -23,7 +23,8 @@ jobs:
           pip install openmeteo-requests pandas requests-cache retry-requests
 
       - name: Executa el script
-        run: python GitHub_Actions.py
+        run: python ProjecteGitHub-Actions/GitHub_Actions.py
+
 
       - name: Puja el fitxer JSON
         run: |
