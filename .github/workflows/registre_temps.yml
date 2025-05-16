@@ -28,10 +28,13 @@ jobs:
       - name: Executa el script
         run: python "ProjecteGitHub-Actions(part2)/GitHub_Actions.py"
 
-      - name: Puja el fitxer JSON
+      - name: Configura Git per push
         run: |
           git config user.name "MarcGomezRufas"
           git config user.email "marc.gomez22@lacetania.cat"
-          git add *.json
-          git commit -m "Afegit fitxer json diari" || echo "Sense canvis"
-          git push
+          git remote set-url origin https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/MarcGomezRufas/Registre-Temps-Diari.git
+      - name: Fes commit i push
+        run: |
+          git add temperatures_*.json
+          git commit -m "Afegit fitxer json diari"
+          git push origin main
