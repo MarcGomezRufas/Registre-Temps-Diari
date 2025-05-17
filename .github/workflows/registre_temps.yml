@@ -28,10 +28,10 @@ jobs:
       - name: Executa el script
         run: python "ProjecteGitHub-Actions(part2)/GitHub_Actions.py"
 
-      - name: Mou el fitxer JSON a la carpeta
+      - name: Mou el fitxer JSON a la carpeta del projecte
         run: |
-          mkdir -p Registre-Temps-Diari
-          mv temperatures_*.json Registre-Temps-Diari/
+          mkdir -p "ProjecteGitHub-Actions(part2)/Registre-Temps-Diari"
+          mv temperatures_*.json "ProjecteGitHub-Actions(part2)/Registre-Temps-Diari/"
 
       - name: Configura Git per push
         run: |
@@ -41,6 +41,6 @@ jobs:
 
       - name: Fes commit i push
         run: |
-          git add Registre-Temps-Diari/temperatures_*.json
-          git commit -m "Afegit fitxer json diari dins la carpeta Registre-Temps-Diari"
+          git add "ProjecteGitHub-Actions(part2)/Registre-Temps-Diari/temperatures_*.json"
+          git commit -m "Afegit fitxer json diari dins la subcarpeta Registre-Temps-Diari"
           git push origin main
